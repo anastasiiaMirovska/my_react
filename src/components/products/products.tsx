@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import Product, {IProductTypeProps, IProductProps} from "../product/product";
+import Product, {IProductProps} from "../product/product";
 
 const Products:FC = () => {
     const [products, setProducts] = useState<IProductProps[]>([]);
