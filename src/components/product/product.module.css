@@ -1,0 +1,39 @@
+.box{
+    border:1px solid rgba(31, 31, 31, 0.2);
+    padding: 40px;
+}
+.block{
+    width:40vw;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.column{
+    flex-direction: column;
+}
+.display_flex{
+    display: flex;
+    align-items: center;
+}
+.image_box{
+    justify-content: space-evenly;
+    flex-wrap:wrap;
+    background-color: #e5fdfd;
+}
+.image_box img{
+    width:300px;
+}
+
+.small_text{
+    font-size: 16px;
+   }
+.medium_text{
+    font-size: 20px;
+}
+.big_text{
+    font-size: 25px;
+    color: #ff6f40;
+}
+
