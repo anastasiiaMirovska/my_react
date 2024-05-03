@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import styles from "./product.module.css"
+import styles from "./Product.module.css"
 
 export interface IProductProps {
     id: number,
@@ -15,8 +15,20 @@ export interface IProductProps {
     images: string[],
 }
 
-export type IProductTypeProps = IProductProps & {children ?:React.ReactNode};
-const Product: FC<IProductTypeProps> = ({id,title,description,price,discountPercentage,rating,stock,brand,category,thumbnail,images}) => {
+export type IProductTypeProps = IProductProps & { children?: React.ReactNode };
+const Product: FC<IProductTypeProps> = ({
+                                            id,
+                                            title,
+                                            description,
+                                            price,
+                                            discountPercentage,
+                                            rating,
+                                            stock,
+                                            brand,
+                                            category,
+                                            thumbnail,
+                                            images
+                                        }) => {
     return (
         <div className={`${styles.box}`}>
 
@@ -30,7 +42,7 @@ const Product: FC<IProductTypeProps> = ({id,title,description,price,discountPerc
                     <span><b className={styles.medium_text}>Discount: {discountPercentage}%</b></span>
                     <h3>Characteristics:</h3>
                     <ul>
-                    <li>Rating: {rating}</li>
+                        <li>Rating: {rating}</li>
                         <li>Stock: {stock}</li>
                         <li>Brand: {brand}</li>
                         <li>Category: {category}</li>
