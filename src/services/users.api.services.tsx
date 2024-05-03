@@ -1,7 +1,5 @@
 import axios, {AxiosResponse} from "axios";
-import {IUserModel} from "../models/IUserModel";
 import {UsersResponseModel} from "./responseModels/UsersResponseModel";
-import {IPostModel} from "../models/IPostModel";
 import {PostsResponseModel} from "./responseModels/PostsResponseModel";
 
 let axiosInstance = axios.create({
