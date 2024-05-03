@@ -1,0 +1,7 @@
+.posts_block{
+    margin-top:20px;
+    position: fixed;
+    overflow: auto;
+    max-height: 100vh;
+    top:0;
+}

@@ -1,24 +1,22 @@
 import React, {FC, useEffect, useState} from 'react';
 import UserComponent from "../UserComponent/UserComponent";
-import {IUserModel} from "../../models/UserModel";
+import {IUserModel} from "../../models/IUserModel";
 import {getAllUsers} from "../../services/users.api.services";
 
+type ITypePropsUsers = {lift?:(postId:number)=>void};
 
-const UsersComponent: FC = () => {
+const UsersComponent: FC<ITypePropsUsers> = ({lift}) => {
 
     const [users, setUsers] = useState<IUserModel[]>([])
     useEffect(()=>{
 
-        getAllUsers().then(({data})=>{
-            setUsers(data.users)
-            console.log(data)
-        })
-    }, [])
+        getAllUsers().then(({data})=> setUsers(data.users))
+    }, [users])
 
     return (
         <div>
             {
-                users.map((user)=>(<UserComponent key={user.id} user={user} />))
+                users.map((user)=>(<UserComponent key={user.id} user={user} lift={lift} />))
             }
         </div>
     );

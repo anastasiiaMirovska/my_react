@@ -1,0 +1,9 @@
+.App{
+    display:flex;
+    .users_block{
+        width:50%;
+    }
+    .posts_block{
+        width:50%;
+    }
+}

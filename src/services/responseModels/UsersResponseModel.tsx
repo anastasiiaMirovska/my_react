@@ -1,4 +1,4 @@
-import {IUserModel} from "../../models/UserModel";
+import {IUserModel} from "../../models/IUserModel";
 
 export interface UsersResponseModel{
     users: IUserModel[],
