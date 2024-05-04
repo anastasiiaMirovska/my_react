@@ -8,8 +8,8 @@ import {getAllPostsOfSingleUser} from "./services/users.api.services";
 const App = () => {
 
     const [posts, setPosts] = useState<IPostModel[]>([])
-    const lift=(postId:number)=>{
-         getAllPostsOfSingleUser(postId).then(({data})=> setPosts(data.posts))
+    const lift = (postId: number) => {
+        getAllPostsOfSingleUser(postId).then(({data}) => setPosts(data.posts))
     }
 
     return (

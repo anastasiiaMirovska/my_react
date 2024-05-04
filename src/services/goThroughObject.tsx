@@ -1,8 +1,10 @@
 import React from "react";
+
 interface KeyValue {
     [key: string]: any;
 }
-export const goThrough = (my_obj:KeyValue) => {
+
+export const goThrough = (my_obj: KeyValue) => {
     const elements = [];
 
     for (let key in my_obj) {

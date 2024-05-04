@@ -1,5 +1,5 @@
 import {IUserModel} from "../../models/IUserModel";
 
-export interface UsersResponseModel{
+export interface UsersResponseModel {
     users: IUserModel[],
 }

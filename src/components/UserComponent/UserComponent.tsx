@@ -3,16 +3,13 @@ import {IUserModel} from "../../models/IUserModel";
 import styles from "./User.module.css"
 import {goThrough} from "../../services/goThroughObject"
 
+type IUserProp = { user: IUserModel };
 
-export interface IUserProp{
-    user: IUserModel
-}
-
-export type ITypeUserComponent = IUserProp & { children?: React.ReactNode } & {lift?: (postId:number) => void};
+export type ITypeUserComponent = IUserProp & { children?: React.ReactNode } & { lift?: (postId: number) => void };
 const UserComponent: FC<ITypeUserComponent> = ({user, lift}) => {
 
-    const onClickHandler =()=>{
-        if(lift){
+    const onClickHandler = () => {
+        if (lift) {
             lift(user.id)
         }
     }
