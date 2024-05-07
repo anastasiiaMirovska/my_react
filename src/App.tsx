@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 
-import {UseToggle} from "./hooks/useToggleHook";
+import {usePrevious} from "./hooks/usePreviousHook";
 
 const App = () => {
-    const[value, toggleValue] = UseToggle(false);
+    const [count, setCount] = useState(0)
+    const prev_count = usePrevious(count);
     return (
         <div>
-            <div style={{fontSize:"70px"}}>{value.toString()}</div>
-            <button onClick={toggleValue}>Toggle</button>
+            <div style={{fontSize:"70px"}}>
+                Previous: {prev_count} -  Current: {count}
+            </div>
+            <button onClick={()=> setCount(count>=5 ? count-5 : count+1)}>Increment</button>
         </div>
     );
 };
