@@ -1,12 +1,16 @@
 import React from 'react';
 import './App.css';
 
-const App = () => {
-  return (
-      <div>
+import {UseToggle} from "./hooks/useToggleHook";
 
-      </div>
-  );
+const App = () => {
+    const[value, toggleValue] = UseToggle(false);
+    return (
+        <div>
+            <div>{value.toString()}</div>
+            <button onClick={toggleValue}>Toggle</button>
+        </div>
+    );
 };
 
 export default App;
