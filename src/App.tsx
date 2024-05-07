@@ -1,14 +1,13 @@
 import React from 'react';
 import './App.css';
 
-import {UseToggle} from "./hooks/useToggleHook";
+import {useStorage} from "./hooks/useStorageHook";
 
 const App = () => {
-    const[value, toggleValue] = UseToggle(false);
+
     return (
         <div>
-            <div style={{fontSize:"70px"}}>{value.toString()}</div>
-            <button onClick={toggleValue}>Toggle</button>
+
         </div>
     );
 };
