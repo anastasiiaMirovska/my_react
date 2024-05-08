@@ -5,7 +5,7 @@ import {usePrevious} from "./hooks/usePreviousHook";
 
 const App = () => {
     const [count, setCount] = useState(0)
-    const prev_count = usePrevious(count);
+    const prev_count = usePrevious<number>(count);
     return (
         <div>
             <div style={{fontSize:"70px"}}>
