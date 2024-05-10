@@ -11,7 +11,7 @@ const App = () => {
             <div>
                 {name} - {age}
             </div>
-            <button onClick={() => setName("Oleksandr")}>Set Name</button>
+            <button onClick={() => setName(undefined)}>Set Name</button>
             <button onClick={() => setAge(40)}>Set Age</button>
         </div>
     )
