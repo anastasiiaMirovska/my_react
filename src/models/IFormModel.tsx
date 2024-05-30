@@ -1,5 +1,4 @@
-export interface IPostModel {
-    id:number,
+export interface IFormModel {
     userId: number,
     title: string,
     body: string
