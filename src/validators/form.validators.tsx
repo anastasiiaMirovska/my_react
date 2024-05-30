@@ -1,9 +1,10 @@
 import Joi from "joi";
 
 const FormValidator = Joi.object({
-    userId:Joi.number().min(0).required().messages({
+    userId:Joi.number().min(0).max(10).required().messages({
         "number.required":"userId can`t be empty",
-        "number.min":"User id start from 0"
+        "number.min":"Users` id start from 0",
+        "number.max":"Max value is 10"
     }),
     title: Joi.string().min(3).max(100).required().messages({
         "string.required":"Title can`t be empty",
