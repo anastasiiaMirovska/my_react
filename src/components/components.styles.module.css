@@ -21,3 +21,11 @@
     max-width: 42vw;
     margin-bottom: 25px;
 }
+button{
+    width:130px;
+    height:37px;
+    margin:10px 0;
+    background-color: aquamarine;
+    border: 1px solid #35d39d;
+    border-radius: 5px;
+}
