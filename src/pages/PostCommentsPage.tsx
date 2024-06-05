@@ -13,7 +13,7 @@ const PostCommentsPage = () => {
             postsApiService.getPostComments(postId).then(resp=>setPostComments(resp.data));
             console.log(postComments);
         }
-    },[postId, postComments]);
+    },[postId]);
 
 
     return (

@@ -12,7 +12,7 @@ const UserPostsPage = () => {
         if(userId){
             usersApiService.getUserPosts(userId).then(resp=>setUserPosts(resp.data));
         }
-    },[userId, userPosts]);
+    },[userId]);
 
     return (
         <div>
