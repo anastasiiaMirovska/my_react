@@ -1,24 +1,33 @@
 import React, {useEffect, useState} from 'react';
-import {ICarWithAuthModel} from "../models/ICarWithAuthModel";
 import {carService} from "../services/api.service";
 import CarsComponent from "../components/CarsComponenr/CarsComponent";
+import {ICarPaginatedModel} from "../models/ICarPaginatedModel";
+import {useSearchParams} from "react-router-dom";
+import PaginationComponent from "../components/PaginationComponent/PaginationComponent";
 
 const CarsPage = () => {
 
-    const [cars, setCars] = useState<ICarWithAuthModel[]>([]);
+    const [query, setQuery] = useSearchParams({page: "1"});
+
+    const [carPaginatedObject, setCarPaginatedObject] = useState<ICarPaginatedModel>({
+        total_items: 0,
+        total_pages: 0,
+        prev: null,
+        next: null,
+        items: []});
 
     useEffect(()=>{
-        carService.getCars().then(value=>{
-            console.log(value)
-            if (value){
-                setCars([...value.items])
+        carService.getCars(query.get("page")||"1").then(value=>{
+            if(value){
+                setCarPaginatedObject(value);
             }
         })
-    },[])
+    },[query])
 
     return (
         <div>
-            <CarsComponent cars={cars}/>
+            <CarsComponent cars={carPaginatedObject.items}/>
+            <PaginationComponent carPaginatedObject={carPaginatedObject}/>
         </div>
     );
 };
