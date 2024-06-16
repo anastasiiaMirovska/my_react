@@ -19,7 +19,7 @@ const MainLayout = () => {
         usersService.getUsers().then(value => setUsers(value.data));
         postsService.getPosts().then(value=> setPosts(value.data));
         commentsService.getComments().then(value=>setComments(value.data));
-    }, [users, posts, comments])
+    }, [])
 
     const setFavouriteUser =(obj:IUserModel)=>{
         setFavouriteUserState(obj);
