@@ -1,0 +1,20 @@
+.heading{
+    height:60px;
+    background-color: aquamarine;
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #03412d;
+    font-weight: 700;
+}
+
+.navLinkActive {
+    text-decoration: none;
+    color: #145f4c;
+    font-weight: 500;
+}
