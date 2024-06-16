@@ -3,20 +3,23 @@ import HeaderComponent from "../components/HeaderComponent/HeaderComponent";
 import {Outlet} from "react-router-dom";
 import {IUserModel} from "../models/IUserModel";
 import {IPostModel} from "../models/IPostModel";
-import {postsService, usersService} from "../services/api.service";
+import {commentsService, postsService, usersService} from "../services/api.service";
 import {Context} from "../context/ContextProvider";
+import {ICommentModel} from "../models/ICommentModel";
 
 const MainLayout = () => {
 
     const [users, setUsers] = useState<IUserModel[]>([]);
     const [posts, setPosts] = useState<IPostModel[]>([]);
+    const [comments, setComments] = useState<ICommentModel[]>([]);
 
     const [favouriteUserState, setFavouriteUserState] = useState<IUserModel | null>(null);
 
     useEffect(()=>{
         usersService.getUsers().then(value => setUsers(value.data));
         postsService.getPosts().then(value=> setPosts(value.data));
-    })
+        commentsService.getComments().then(value=>setComments(value.data));
+    }, [users, posts, comments])
 
     const setFavouriteUser =(obj:IUserModel)=>{
         setFavouriteUserState(obj);
@@ -32,6 +35,9 @@ const MainLayout = () => {
                 },
                 postStore:{
                     allPosts: posts
+                },
+                commentStore:{
+                    allComments: comments
                 }
             }}>
                 <Outlet/>

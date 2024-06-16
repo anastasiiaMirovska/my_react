@@ -3,9 +3,7 @@ import {useContextProvider} from "../../context/ContextProvider";
 import UserComponent from "../UserComponent/UserComponent";
 
 const UsersComponent = () => {
-
-    const {userStore:{allUsers}}= useContextProvider();
-
+    const {userStore: {allUsers}}= useContextProvider();
     return (
         <div>
             {

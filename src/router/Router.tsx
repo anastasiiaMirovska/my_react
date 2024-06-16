@@ -2,8 +2,9 @@ import {createBrowserRouter, RouteObject} from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import UsersPage from "../pages/UsersPage";
 import PostsPage from "../pages/PostsPage";
-import UsersPostsComponent from "../components/UsersPostsComponent/UsersPostsComponent";
 import UsersPostsPage from "../pages/UsersPostsPage";
+import CommentsPage from "../pages/CommentsPage";
+import PostsCommentsPage from "../pages/PostsCommentsPage";
 
 const routes:RouteObject[]=[
     {
@@ -12,7 +13,9 @@ const routes:RouteObject[]=[
         children:[
             {path:"users", element:<UsersPage/>},
             {path:"posts",element:<PostsPage/>},
-            {path:"usersPosts", element:<UsersPostsPage/>}
+            {path:"usersPosts", element:<UsersPostsPage/>},
+            {path:"comments", element:<CommentsPage/>},
+            {path:"postsComments", element:<PostsCommentsPage/>}
         ]
     }
 ]
