@@ -1,10 +1,10 @@
 import React, {useEffect, useMemo, useState} from 'react';
-import {useContextProvider} from "../context/ContextProvider";
+import {useStore} from "../context/ContextProvider";
 import {UsersWithPostsType} from "../models/UsersWithPostsType";
 
 const UsersPostsPage = () => {
 
-    const {userStore:{allUsers}, postStore:{allPosts}}= useContextProvider();
+    const {userStore:{allUsers}, postStore:{allPosts}}= useStore();
     const [userWithPostsState, setUserWithPostsState] = useState<UsersWithPostsType[]>([]);
 
     const userWithPostsArray = useMemo(()=> {
@@ -26,7 +26,7 @@ const UsersPostsPage = () => {
                     <h4>{user.name} post titles:</h4>
                     <ul>
                     {
-                        user.posts.map(post=> (<li> key={post.id} {post.title}</li>))
+                        user.posts.map(post=> (<li key={post.id}> {post.title}</li>))
                     }
                     </ul>
 

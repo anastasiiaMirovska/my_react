@@ -4,46 +4,30 @@ import {Outlet} from "react-router-dom";
 import {IUserModel} from "../models/IUserModel";
 import {IPostModel} from "../models/IPostModel";
 import {commentsService, postsService, usersService} from "../services/api.service";
-import {Context} from "../context/ContextProvider";
 import {ICommentModel} from "../models/ICommentModel";
+import {useStore} from "../context/ContextProvider";
 
 const MainLayout = () => {
 
-    const [users, setUsers] = useState<IUserModel[]>([]);
-    const [posts, setPosts] = useState<IPostModel[]>([]);
-    const [comments, setComments] = useState<ICommentModel[]>([]);
-
-    const [favouriteUserState, setFavouriteUserState] = useState<IUserModel | null>(null);
+    const {commentStore: {setAllComments}, postStore: { setAllPosts}, userStore: { setAllUsers,favoriteUser, setFavoriteUser}}= useStore()
 
     useEffect(()=>{
-        usersService.getUsers().then(value => setUsers(value.data));
-        postsService.getPosts().then(value=> setPosts(value.data));
-        commentsService.getComments().then(value=>setComments(value.data));
+        usersService.getUsers().then(value => setAllUsers(value.data));
+        postsService.getPosts().then(value=> setAllPosts(value.data));
+        commentsService.getComments().then(value=>setAllComments(value.data));
     }, [])
 
     const setFavouriteUser =(obj:IUserModel)=>{
-        setFavouriteUserState(obj);
+        setFavoriteUser(obj);
     }
 
     return (
         <div>
             <HeaderComponent/>
-            <Context.Provider value={{
-                userStore: {
-                    allUsers: users,
-                    setFavouriteUser:(obj:IUserModel)=> setFavouriteUser(obj)
-                },
-                postStore:{
-                    allPosts: posts
-                },
-                commentStore:{
-                    allComments: comments
-                }
-            }}>
-                <Outlet/>
-            </Context.Provider>
+            <Outlet/>
+
             <hr/>
-                {favouriteUserState && <div>Favorite user is {favouriteUserState.name} - {favouriteUserState.email}</div>}
+                {favoriteUser&& <div>Favorite user is {favoriteUser.name} - {favoriteUser.email}</div>}
             <hr/>
 
         </div>

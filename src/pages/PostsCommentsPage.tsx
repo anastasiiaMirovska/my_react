@@ -1,9 +1,9 @@
 import React, {useEffect, useMemo, useState} from 'react';
-import {useContextProvider} from "../context/ContextProvider";
+import {useStore} from "../context/ContextProvider";
 import {PostsWithCommentsType} from "../models/PostsWithCommentsType";
 
 const PostsCommentsPage = () => {
-    const {commentStore:{allComments}, postStore: {allPosts}}=useContextProvider();
+    const {commentStore:{allComments}, postStore: {allPosts}}=useStore();
     const [postWithCommentsState, setPostWithCommentsState] = useState<PostsWithCommentsType[]>([]);
 
     const postWithCommentsArray = useMemo(()=>{
@@ -23,7 +23,7 @@ const PostsCommentsPage = () => {
                     <h4>Post {post.id} has such comments:</h4>
                     <ul>
                         {
-                            post.comments.map(comment=> <li key={comment.id}>{comment.body} FROM {comment.name}</li>)
+                            post.comments.map(comment=> <li key={comment.id}>{comment.id} {comment.body} FROM {comment.name}</li>)
                         }
                     </ul>
                 </div>)

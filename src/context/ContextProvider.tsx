@@ -1,34 +1,81 @@
-import {createContext, useContext} from "react";
 import {IUserModel} from "../models/IUserModel";
 import {IPostModel} from "../models/IPostModel";
 import {ICommentModel} from "../models/ICommentModel";
+import {create} from "zustand";
 
 type StoreType = {
     userStore: {
         allUsers:IUserModel[],
-        setFavouriteUser:(obj:IUserModel)=>void
+        setAllUsers:(usersArray:IUserModel[])=>void,
+
+        favoriteUser: IUserModel | null,
+        setFavoriteUser:(user:IUserModel)=>void
     },
     postStore: {
-        allPosts: IPostModel[]
+        allPosts: IPostModel[],
+        setAllPosts: (postsArray:IPostModel[])=>void
     },
     commentStore:{
-        allComments:ICommentModel[]
+        allComments:ICommentModel[],
+        setAllComments: (commentsArray: ICommentModel[])=>void
     }
 }
 
-const defaultValue:StoreType ={
-    userStore: {
-        allUsers:[],
-        setFavouriteUser:()=>{}
-    },
-    postStore: {
-        allPosts: []
-    },
-    commentStore:{
-        allComments:[]
+export const useStore = create<StoreType>()((set)=>{
+    return{
+        userStore:{
+            allUsers: [],
+            setAllUsers:(usersArray:IUserModel[])=>{
+                return set((state:StoreType)=>{
+                    return {
+                        ...state,
+                        userStore:{
+                            ...state.userStore,
+                            allUsers:usersArray
+                        }
+                    }
+                })
+            },
+            favoriteUser: null,
+            setFavoriteUser: (user:IUserModel)=>{
+                return set((state:StoreType)=>{
+                    return {
+                        ...state,
+                        userStore:{
+                            ...state.userStore,
+                            favoriteUser: user
+                        }
+                    }
+                })
+            }
+        },
+        postStore:{
+            allPosts: [],
+            setAllPosts:(postsArray:IPostModel[])=>{
+                return set((state:StoreType)=>{
+                    return{
+                        ...state,
+                        postStore:{
+                            ...state.postStore,
+                            allPosts: postsArray
+                        }
+                    }
+                })
+            }
+        },
+        commentStore:{
+            allComments:[],
+            setAllComments:(commentsArray: ICommentModel[])=>{
+                return set((state:StoreType)=>{
+                    return{
+                        ...state,
+                        commentStore:{
+                            ...state.commentStore,
+                            allComments:commentsArray
+                        }
+                    }
+                })
+            }
+        }
     }
-}
-export const Context = createContext<StoreType>(defaultValue);
-export const useContextProvider = ():StoreType =>{
-    return useContext(Context);
-}
+})
