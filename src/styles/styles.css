@@ -1,0 +1,24 @@
+button{
+    width:130px;
+    height:37px;
+    margin:10px 0;
+    background-color: aquamarine;
+    border: 1px solid #35d39d;
+    border-radius: 5px;
+    margin:10px
+}
+
+div{
+    margin:20px;
+    justify-content: center;
+    text-align: center;
+}
+
+input{
+    margin:10px
+}
+
+.error_message{
+    color: #f62323;
+    font-weight: 500;
+}
