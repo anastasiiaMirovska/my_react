@@ -16,7 +16,7 @@ const PostPage = () => {
         <div>
             <h3>Post details:</h3>
             {
-               post ? <p> Body : {post.body}</p> : <p>There is no info</p>
+               post ? <p key={post.id}> Body : {post.body}</p> : <p>There is no info</p>
             }
         </div>
     );

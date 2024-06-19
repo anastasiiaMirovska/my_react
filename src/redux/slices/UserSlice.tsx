@@ -1,5 +1,5 @@
 import {IUserModel} from "../../models/IUserModel";
-import {createAsyncThunk, createSlice, isFulfilled, PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, isFulfilled, isRejected, PayloadAction} from "@reduxjs/toolkit";
 import {userService} from "../../services/api.service";
 import {Simulate} from "react-dom/test-utils";
 import load = Simulate.load;
@@ -76,6 +76,9 @@ export const userSlice = createSlice({
             })
             .addMatcher(isFulfilled(loadUsers, loadUserById), (state,action)=>{
                 state.isLoaded = true;
+            })
+            .addMatcher(isRejected(loadUsers, loadUserById), (state,action)=>{
+                state.isLoaded = false;
             })
 });
 

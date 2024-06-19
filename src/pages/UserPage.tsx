@@ -15,7 +15,7 @@ const UserPage = () => {
     return (
         <div>
             {
-                user && user.email
+                user && <p key={user.id}>{user.email}</p>
             }
         </div>
     );
